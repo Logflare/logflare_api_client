@@ -1,13 +1,17 @@
 defmodule LogflareApiClient do
   @moduledoc false
   use Tesla, only: [:post], docs: false
-  adapter Tesla.Adapter.Mint, pool: __MODULE__
+
+  adapter Tesla.Adapter.Finch,
+    name: LogflareApiClient.Finch,
+    receive_timeout: 30_000
 
   @default_api_path "/logs/elixir/logger"
 
   @callback post_logs(Tesla.Client.t(), list(map), String.t()) ::
               {:ok, Tesla.Env.t()} | {:error, term}
 
+  @spec new(%{url: String.t(), api_key: String.t()}) :: Tesla.Client.t()
   def new(%{url: url, api_key: api_key}) when is_binary(url) and is_binary(api_key) do
     middlewares = [
       Tesla.Middleware.FollowRedirects,
@@ -23,10 +27,9 @@ defmodule LogflareApiClient do
     Tesla.client(middlewares)
   end
 
+  @spec post_logs(Tesla.Client.t(), [map], String.t()) :: {:ok, Tesla.Env.t()} | {:error, term}
   def post_logs(%Tesla.Client{} = client, batch, source_id) when is_list(batch) do
-    body =
-      %{"batch" => batch, "source" => source_id}
-      |> Bertex.encode()
+    body = Bertex.encode(%{"batch" => batch, "source" => source_id})
 
     Tesla.post(client, api_path(), body)
   end
