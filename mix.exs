@@ -8,6 +8,9 @@ defmodule LogflareApiClient.MixProject do
       elixir: "~> 1.11",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
+      description: "A common client interface to the Logflare API.",
+      links: %{"GitHub" => "https://github.com/Logflare/logflare_api_client"},
+      licenses: ["MIT"],
       deps: deps()
     ]
   end
