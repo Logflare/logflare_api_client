@@ -10,6 +10,7 @@ defmodule LogflareApiClient.Application do
     children = [
       # Starts a worker by calling: LogflareApiClient.Worker.start_link(arg)
       # {LogflareApiClient.Worker, arg}
+      {Finch, name: LogflareApiClient.Finch}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

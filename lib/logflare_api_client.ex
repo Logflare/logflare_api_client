@@ -1,10 +1,5 @@
 defmodule LogflareApiClient do
   @moduledoc false
-  use Tesla, only: [:post], docs: false
-
-  adapter Tesla.Adapter.Finch,
-    name: LogflareApiClient.Finch,
-    receive_timeout: 30_000
 
   @default_api_path "/logs/elixir/logger"
 
@@ -24,7 +19,10 @@ defmodule LogflareApiClient do
       {Tesla.Middleware.Compression, format: "gzip"}
     ]
 
-    Tesla.client(middlewares)
+    Tesla.client(
+      middlewares,
+      {Tesla.Adapter.Finch, name: LogflareApiClient.Finch, receive_timeout: 30_000}
+    )
   end
 
   @spec post_logs(Tesla.Client.t(), [map], String.t()) :: {:ok, Tesla.Env.t()} | {:error, term}
