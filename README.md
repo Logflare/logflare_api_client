@@ -1,6 +1,6 @@
 # LogflareApiClient
 
-**TODO: Add description**
+A common interface to the Logflare API.
 
 ## Installation
 
@@ -10,7 +10,7 @@ by adding `logflare_api_client` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:logflare_api_client, "~> 0.1.0"}
+    {:logflare_api_client, "~> 0.2.0"}
   ]
 end
 ```
