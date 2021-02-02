@@ -4,8 +4,8 @@ defmodule LogflareApiClient.MixProject do
   def project do
     [
       app: :logflare_api_client,
-      version: "0.3.0",
-      elixir: "~> 1.11",
+      version: "0.3.1",
+      elixir: "~> 1.10",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       description: "A common client interface to the Logflare API.",
