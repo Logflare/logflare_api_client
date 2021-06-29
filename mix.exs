@@ -33,8 +33,8 @@ defmodule LogflareApiClient.MixProject do
     [
       {:tesla, "~> 1.4.0"},
       {:jason, ">= 1.0.0"},
-      {:mint, "~> 1.2.0"},
-      {:finch, "~> 0.5"},
+      {:mint, "~> 1.3.0"},
+      {:finch, "~> 0.8"},
       {:castore, "~> 0.1"},
       {:bertex, "~> 1.3"},
       {:bypass, "~> 2.1", only: :test},
