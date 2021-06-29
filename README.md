@@ -10,7 +10,7 @@ by adding `logflare_api_client` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:logflare_api_client, "~> 0.3.0"}
+    {:logflare_api_client, "~> 0.3.2"}
   ]
 end
 ```
