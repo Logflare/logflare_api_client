@@ -4,7 +4,7 @@ defmodule LogflareApiClient.MixProject do
   def project do
     [
       app: :logflare_api_client,
-      version: "0.3.2",
+      version: "0.3.3",
       elixir: "~> 1.10",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
@@ -33,9 +33,9 @@ defmodule LogflareApiClient.MixProject do
     [
       {:tesla, "~> 1.4.0"},
       {:jason, ">= 1.0.0"},
-      {:mint, "~> 1.3.0"},
-      {:finch, "~> 0.8"},
-      {:castore, "~> 0.1"},
+      {:mint, "~> 1.4.0"},
+      {:finch, "~> 0.10.2"},
+      {:castore, "~> 0.1.17"},
       {:bertex, "~> 1.3"},
       {:bypass, "~> 2.1", only: :test},
       {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
