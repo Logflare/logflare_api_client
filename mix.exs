@@ -4,7 +4,7 @@ defmodule LogflareApiClient.MixProject do
   def project do
     [
       app: :logflare_api_client,
-      version: "0.3.4",
+      version: "0.3.5",
       elixir: "~> 1.10",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
@@ -31,7 +31,7 @@ defmodule LogflareApiClient.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:tesla, "~> 1.4.0"},
+      {:tesla, "~> 1.0"},
       {:jason, ">= 1.0.0"},
       {:finch, "~> 0.10"},
       {:bertex, "~> 1.3"},
