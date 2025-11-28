@@ -10,6 +10,15 @@ defmodule LogflareApiClient do
   def new(%{url: url, api_key: api_key}) when is_binary(url) and is_binary(api_key) do
     middlewares = [
       Tesla.Middleware.FollowRedirects,
+      {Tesla.Middleware.Retry,
+        delay: 500,
+        max_retries: 3,
+        max_delay: 4_000,
+        should_retry: fn
+          {:ok, %{status: status}} when status >= 500 -> true
+          {:ok, _} -> false
+          {:error, _} -> true
+      end},
       {Tesla.Middleware.Headers,
        [
          {"x-api-key", api_key},
