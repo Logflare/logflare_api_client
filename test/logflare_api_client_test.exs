@@ -18,6 +18,7 @@ defmodule LogflareApiClientTest do
 
   test "ApiClient sends a correct POST request with gzip in bert format", %{bypass: bypass} do
     response = Jason.encode!(%{"response" => "success"})
+
     Bypass.expect_once(bypass, "POST", @path, fn conn ->
       {:ok, body, conn} = Plug.Conn.read_body(conn)
       assert {"x-api-key", @api_key} in conn.req_headers

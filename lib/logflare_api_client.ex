@@ -11,14 +11,14 @@ defmodule LogflareApiClient do
     middlewares = [
       Tesla.Middleware.FollowRedirects,
       {Tesla.Middleware.Retry,
-        delay: 500,
-        max_retries: 3,
-        max_delay: 4_000,
-        should_retry: fn
-          {:ok, %{status: status}} when status >= 500 -> true
-          {:ok, _} -> false
-          {:error, _} -> true
-      end},
+       delay: 500,
+       max_retries: 3,
+       max_delay: 4_000,
+       should_retry: fn
+         {:ok, %{status: status}} when status >= 500 -> true
+         {:ok, _} -> false
+         {:error, _} -> true
+       end},
       {Tesla.Middleware.Headers,
        [
          {"x-api-key", api_key},
